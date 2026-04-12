@@ -1,279 +1,248 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mathletics │ Online Learning Math Program</title>
+  <title>Mathletics│Online Learning Math Program</title>
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/3/30/Mathletics_Logo_%282019%29.png">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #070b14;
-      color: white;
-      display: flex;
-    }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #070b14;
+      color: white;
+      display: flex;
+    }
 
-    /* SIDEBAR */
-    .sidebar {
-      width: 240px;
-      height: 100vh;
-      background: #0f172a;
-      padding: 15px;
-      box-sizing: border-box;
-    }
+    .sidebar {
+      width: 240px;
+      height: 100vh;
+      background: #0f172a;
+      padding: 15px;
+      box-sizing: border-box;
+    }
 
-    .logo {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-    .nav-btn {
-      width: 100%;
-      padding: 10px;
-      margin: 6px 0;
-      border: none;
-      border-radius: 10px;
-      background: #1e293b;
-      color: white;
-      cursor: pointer;
-      text-align: left;
-    }
+    .nav-btn {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: none;
+      border-radius: 10px;
+      background: #1e293b;
+      color: white;
+      cursor: pointer;
+      text-align: left;
+    }
 
-    .nav-btn:hover {
-      background: #334155;
-    }
+    .nav-btn:hover {
+      background: #334155;
+    }
 
-    /* MAIN */
-    .main {
-      flex: 1;
-      overflow-y: auto;
-      height: 100vh;
-    }
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      height: 100vh;
+    }
 
-    /* TOPBAR */
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      padding: 15px;
-      background: #0f172a;
-      position: sticky;
-      top: 0;
-    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      background: #0f172a;
+      position: sticky;
+      top: 0;
+    }
 
-    #search {
-      padding: 8px;
-      border-radius: 10px;
-      border: none;
-      width: 220px;
-    }
+    #search {
+      padding: 8px;
+      border-radius: 10px;
+      border: none;
+      width: 220px;
+    }
 
-    /* SECTIONS */
-    .section-title {
-      margin: 20px;
-      font-size: 18px;
-      opacity: 0.9;
-    }
+    .section-title {
+      margin: 20px;
+      font-size: 18px;
+      opacity: 0.9;
+    }
 
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 15px;
-      padding: 0 20px 20px 20px;
-    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 15px;
+      padding: 0 20px 20px 20px;
+    }
 
-    .card {
-      background: #111827;
-      border-radius: 14px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: 0.2s;
-      position: relative;
-    }
+    .card {
+      background: #111827;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.2s;
+      position: relative;
+    }
 
-    .card:hover {
-      transform: scale(1.05);
-    }
+    .card:hover {
+      transform: scale(1.05);
+    }
 
-    .card img {
-      width: 100%;
-      height: 110px;
-      object-fit: cover;
-    }
+    .card img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+    }
 
-    .card h3 {
-      margin: 0;
-      padding: 10px;
-      font-size: 14px;
-    }
+    .card h3 {
+      margin: 0;
+      padding: 10px;
+      font-size: 14px;
+    }
 
-    .star {
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      cursor: pointer;
-      font-size: 18px;
-    }
+    .star {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
 
-    /* PLAYER */
-    #player {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      display: none;
-      z-index: 999;
-    }
+    #player {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: none;
+      z-index: 999;
+    }
 
-    #player iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+    #player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-    #close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 24px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-  </style>
+    #close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
-  <div class="logo"> Kian Games</div>
-
-  <button class="nav-btn" onclick="showAll()"> Home</button>
-  <button class="nav-btn" onclick="filter('action')"> Action</button>
-  <button class="nav-btn" onclick="filter('puzzle')"> Puzzle</button>
-  <button class="nav-btn" onclick="showFavorites()"> Favorites</button>
-  <button class="nav-btn" onclick="showRecent()"> Recent</button>
+  <div class="logo"> Kian Games</div>
+  <button class="nav-btn" onclick="showAll()"> Home</button>
+  <button class="nav-btn" onclick="filter('action')"> Action</button>
+  <button class="nav-btn" onclick="filter('puzzle')"> Puzzle</button>
+  <button class="nav-btn" onclick="showFavorites()"> Favorites</button>
+  <button class="nav-btn" onclick="showRecent()"> Recent</button>
 </div>
 
-<!-- MAIN -->
 <div class="main">
+  <div class="topbar">
+    <div>Game Library</div>
+    <input id="search" placeholder="Search games..." onkeyup="searchGames()">
+  </div>
 
-  <div class="topbar">
-    <div>Game Library</div>
-    <input id="search" placeholder="Search games..." onkeyup="searchGames()">
-  </div>
+  <div class="section-title">Featured Games</div>
 
-  <div class="section-title">Featured Games</div>
+  <div class="grid" id="grid">
+    <div class="card" data-cat="action" data-url="https://example.com/game1">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="https://via.placeholder.com/300x140">
+      <h3>Action Game</h3>
+    </div>
 
-  <div class="grid" id="grid">
-
-    <div class="card" data-cat="action" data-url="https://example.com/game1">
-      <div class="star" onclick="toggleFav(event,this)">☆</div>
-      <img src="https://via.placeholder.com/300x140">
-      <h3>Action Game</h3>
-    </div>
-
-    <div class="card" data-cat="puzzle" data-url="https://example.com/game2">
-      <div class="star" onclick="toggleFav(event,this)">☆</div>
-      <img src="https://via.placeholder.com/300x140">
-      <h3>Puzzle Game</h3>
-    </div>
-
-  </div>
-
+    <div class="card" data-cat="puzzle" data-url="https://example.com/game2">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="https://via.placeholder.com/300x140">
+      <h3>Puzzle Game</h3>
+    </div>
+  </div>
 </div>
 
-<!-- PLAYER -->
 <div id="player">
-  <div id="close" onclick="closeGame()"> </div>
-  <iframe id="frame"></iframe>
+  <div id="close" onclick="closeGame()"> </div>
+  <iframe id="frame"></iframe>
 </div>
 
 <script>
-
 let fav = JSON.parse(localStorage.getItem("fav") || "[]");
 let recent = JSON.parse(localStorage.getItem("recent") || "[]");
 
-/* OPEN GAME */
 document.querySelectorAll(".card").forEach(card => {
-  card.onclick = () => {
-    openGame(card.dataset.url);
-  }
+  card.onclick = () => openGame(card.dataset.url);
 });
 
 function openGame(url) {
-  document.getElementById("player").style.display = "block";
-  document.getElementById("frame").src = url;
-
-  recent.unshift(url);
-  recent = [...new Set(recent)].slice(0, 10);
-  localStorage.setItem("recent", JSON.stringify(recent));
+  document.getElementById("player").style.display = "block";
+  document.getElementById("frame").src = url;
+  recent.unshift(url);
+  recent = [...new Set(recent)].slice(0, 10);
+  localStorage.setItem("recent", JSON.stringify(recent));
 }
 
-/* CLOSE */
 function closeGame() {
-  document.getElementById("player").style.display = "none";
-  document.getElementById("frame").src = "";
+  document.getElementById("player").style.display = "none";
+  document.getElementById("frame").src = "";
 }
 
-/* SEARCH */
 function searchGames() {
-  let v = document.getElementById("search").value.toLowerCase();
-
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display = c.innerText.toLowerCase().includes(v) ? "block" : "none";
-  });
+  let v = document.getElementById("search").value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c => {
+    c.style.display = c.innerText.toLowerCase().includes(v) ? "block" : "none";
+  });
 }
 
-/* FILTER */
 function filter(cat) {
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display = (cat === "all" || c.dataset.cat === cat) ? "block" : "none";
-  });
+  document.querySelectorAll(".card").forEach(c => {
+    c.style.display = (cat === "all" || c.dataset.cat === cat) ? "block" : "none";
+  });
 }
 
-/* FAVORITES */
 function toggleFav(e, el) {
-  e.stopPropagation();
-
-  let card = el.closest(".card");
-  let url = card.dataset.url;
-
-  if (fav.includes(url)) {
-    fav = fav.filter(f => f !== url);
-    el.innerText = "☆";
-  } else {
-    fav.push(url);
-    el.innerText = "★";
-  }
-
-  localStorage.setItem("fav", JSON.stringify(fav));
+  e.stopPropagation();
+  let card = el.closest(".card");
+  let url = card.dataset.url;
+  if (fav.includes(url)) {
+    fav = fav.filter(f => f !== url);
+    el.innerText = "☆";
+  } else {
+    fav.push(url);
+    el.innerText = "★";
+  }
+  localStorage.setItem("fav", JSON.stringify(fav));
 }
 
-/* SHOW FAVORITES */
 function showFavorites() {
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display = fav.includes(c.dataset.url) ? "block" : "none";
-  });
+  document.querySelectorAll(".card").forEach(c => {
+    c.style.display = fav.includes(c.dataset.url) ? "block" : "none";
+  });
 }
 
-/* SHOW RECENT */
 function showRecent() {
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display = recent.includes(c.dataset.url) ? "block" : "none";
-  });
+  document.querySelectorAll(".card").forEach(c => {
+    c.style.display = recent.includes(c.dataset.url) ? "block" : "none";
+  });
 }
 
-/* SHOW ALL */
 function showAll() {
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display = "block";
-  });
+  document.querySelectorAll(".card").forEach(c => {
+    c.style.display = "block";
+  });
 }
-
 </script>
 
 </body>
