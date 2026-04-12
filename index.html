@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mathletics│Online Learning Math Program</title>
+  <title>Mathletics │ Online Learning Math Program</title>
   <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/3/30/Mathletics_Logo_%282019%29.png">
 
   <style>
@@ -142,10 +142,11 @@
 <body>
 
 <div class="sidebar">
-  <div class="logo"> "Educational" games lowk unblocked 😂</div>
+  <div class="logo"> Kian Games</div>
   <button class="nav-btn" onclick="showAll()"> Home</button>
   <button class="nav-btn" onclick="filter('action')"> Action</button>
   <button class="nav-btn" onclick="filter('puzzle')"> Puzzle</button>
+  <button class="nav-btn" onclick="filter('horror')"> Horror</button>
   <button class="nav-btn" onclick="showFavorites()"> Favorites</button>
   <button class="nav-btn" onclick="showRecent()"> Recent</button>
 </div>
@@ -159,17 +160,67 @@
   <div class="section-title">Featured Games</div>
 
   <div class="grid" id="grid">
-    <div class="card" data-cat="action" data-url="https://example.com/game1">
+
+    <div class="card" data-cat="horror" data-url="games/fnae/index.html">
       <div class="star" onclick="toggleFav(event,this)">☆</div>
-      <img src="https://via.placeholder.com/300x140">
-      <h3>Action Game</h3>
+      <img src="games/fnae/thumbnail.png">
+      <h3>5 Nights at Epsteins</h3>
     </div>
 
-    <div class="card" data-cat="puzzle" data-url="https://example.com/game2">
+    <div class="card" data-cat="puzzle" data-url="games/2048/index.html">
       <div class="star" onclick="toggleFav(event,this)">☆</div>
-      <img src="https://via.placeholder.com/300x140">
-      <h3>Puzzle Game</h3>
+      <img src="games/2048/thumbnail.png">
+      <h3>2048</h3>
     </div>
+
+    <div class="card" data-cat="action" data-url="games/snake/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/snake/thumbnail.png">
+      <h3>Snake</h3>
+    </div>
+
+    <div class="card" data-cat="puzzle" data-url="games/tetris/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/tetris/thumbnail.png">
+      <h3>Tetris</h3>
+    </div>
+
+    <div class="card" data-cat="action" data-url="games/pacman/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/pacman/thumbnail.png">
+      <h3>Pac-Man</h3>
+    </div>
+
+    <div class="card" data-cat="action" data-url="games/flappy/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/flappy/thumbnail.png">
+      <h3>Flappy Bird</h3>
+    </div>
+
+    <div class="card" data-cat="action" data-url="games/dino/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/dino/thumbnail.png">
+      <h3>Chrome Dino</h3>
+    </div>
+
+    <div class="card" data-cat="action" data-url="games/breakout/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/breakout/thumbnail.png">
+      <h3>Breakout</h3>
+    </div>
+
+    <div class="card" data-cat="puzzle" data-url="games/minesweeper/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/minesweeper/thumbnail.png">
+      <h3>Minesweeper</h3>
+    </div>
+
+    <div class="card" data-cat="puzzle" data-url="games/sudoku/index.html">
+      <div class="star" onclick="toggleFav(event,this)">☆</div>
+      <img src="games/sudoku/thumbnail.png">
+      <h3>Sudoku</h3>
+    </div>
+
   </div>
 </div>
 
