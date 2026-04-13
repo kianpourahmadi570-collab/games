@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mathletics │ Online Learning Math Program</title>
+  <title>Mathletics│Online Learning Math Program</title>
   <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/3/30/Mathletics_Logo_%282019%29.png">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       background: #070b14;
       color: white;
       display: flex;
     }
 
-    /* Sidebar Styles */
     .sidebar {
       width: 240px;
       height: 100vh;
       background: #0f172a;
       padding: 15px;
       box-sizing: border-box;
-      position: fixed; /* Keeps sidebar fixed */
-      left: 0;
-      top: 0;
     }
 
     .logo {
@@ -47,12 +43,10 @@
       background: #334155;
     }
 
-    /* Main Content Area */
     .main {
       flex: 1;
-      margin-left: 240px; /* Offset for the fixed sidebar */
-      min-height: 100vh;
-      padding-bottom: 60px; /* Space so footer doesn't cover cards */
+      overflow-y: auto;
+      height: 100vh;
     }
 
     .topbar {
@@ -62,7 +56,6 @@
       background: #0f172a;
       position: sticky;
       top: 0;
-      z-index: 10;
     }
 
     #search {
@@ -102,7 +95,6 @@
       width: 100%;
       height: 110px;
       object-fit: cover;
-      background: #1e293b; /* Fallback if image is missing */
     }
 
     .card h3 {
@@ -117,10 +109,8 @@
       right: 10px;
       cursor: pointer;
       font-size: 18px;
-      z-index: 5;
     }
 
-    /* Game Player Overlay */
     #player {
       position: fixed;
       top: 0;
@@ -140,26 +130,11 @@
 
     #close {
       position: absolute;
-      top: 15px;
-      right: 25px;
-      font-size: 35px;
-      color: white;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
       cursor: pointer;
       z-index: 1000;
-      text-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    /* FOOTER PHRASE STYLE */
-    .footer-phrase {
-      position: fixed;
-      bottom: 10px;
-      left: 240px; /* Starts after sidebar */
-      right: 0;
-      text-align: center;
-      font-size: 13px;
-      color: #64748b;
-      pointer-events: none; /* Won't block clicks */
-      letter-spacing: 1px;
     }
   </style>
 </head>
@@ -167,12 +142,12 @@
 <body>
 
 <div class="sidebar">
-  <div class="logo">Unblocked Yeronga SHS Games 😂</div>
-  <button class="nav-btn" onclick="showAll()">Home</button>
-  <button class="nav-btn" onclick="filter('fun')">Fun</button>
-  <button class="nav-btn" onclick="filter('horror')">Horror</button>
-  <button class="nav-btn" onclick="showFavorites()">Favorites</button>
-  <button class="nav-btn" onclick="showRecent()">Recent</button>
+  <div class="logo"> Kian Games</div>
+  <button class="nav-btn" onclick="showAll()"> Home</button>
+  <button class="nav-btn" onclick="filter('fun')"> Fun</button>
+  <button class="nav-btn" onclick="filter('horror')"> Horror</button>
+  <button class="nav-btn" onclick="showFavorites()"> Favorites</button>
+  <button class="nav-btn" onclick="showRecent()"> Recent</button>
 </div>
 
 <div class="main">
@@ -184,6 +159,7 @@
   <div class="section-title">Featured Games</div>
 
   <div class="grid" id="grid">
+
     <div class="card" data-cat="horror" data-url="games/fnae/index.html">
       <div class="star" onclick="toggleFav(event,this)">☆</div>
       <img src="">
@@ -202,10 +178,10 @@
       <h3>BitLife</h3>
     </div>
 
-    <div class="card" data-cat="fun" data-url="games/tnmn/index.html">
+    <div class="card" data-cat="horror" data-url="games/tnmn/index.html">
       <div class="star" onclick="toggleFav(event,this)">☆</div>
       <img src="">
-      <h3>TNMN</h3>
+      <h3>That's Not My Neighbor</h3>
     </div>
 
     <div class="card" data-cat="fun" data-url="games/blockblast/index.html">
@@ -213,15 +189,12 @@
       <img src="">
       <h3>Block Blast</h3>
     </div>
+
   </div>
 </div>
 
-<div class="footer-phrase">
-  DM ebikekid123 on Discord for suggestions or bugs 🥰
-</div>
-
 <div id="player">
-  <div id="close" onclick="closeGame()">&times;</div>
+  <div id="close" onclick="closeGame()"> </div>
   <iframe id="frame"></iframe>
 </div>
 
@@ -229,21 +202,15 @@
 let fav = JSON.parse(localStorage.getItem("fav") || "[]");
 let recent = JSON.parse(localStorage.getItem("recent") || "[]");
 
-// Apply click events to cards
 document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener('click', function() {
-    openGame(this.dataset.url);
-  });
+  card.onclick = () => openGame(card.dataset.url);
 });
 
 function openGame(url) {
   document.getElementById("player").style.display = "block";
   document.getElementById("frame").src = url;
-  
-  // Update Recent list
-  recent = recent.filter(item => item !== url); // Remove if exists
-  recent.unshift(url); // Add to front
-  recent = recent.slice(0, 10); // Keep top 10
+  recent.unshift(url);
+  recent = [...new Set(recent)].slice(0, 10);
   localStorage.setItem("recent", JSON.stringify(recent));
 }
 
@@ -296,13 +263,6 @@ function showAll() {
     c.style.display = "block";
   });
 }
-
-// Initial star state check
-document.querySelectorAll(".card").forEach(card => {
-  if(fav.includes(card.dataset.url)) {
-    card.querySelector(".star").innerText = "★";
-  }
-});
 </script>
 
 </body>
